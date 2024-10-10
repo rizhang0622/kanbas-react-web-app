@@ -1,4 +1,3 @@
-// src/Labs/Lab1/index.tsx
 export default function Lab1() {
   return (
     <div id="wd-lab1">
