@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 768px) {
+  #wd-kanbas .wd-main-content-offset {
+    padding-left: 140px !important; /* Offset for sidebar */
+  }
+}
+
+#wd-courses-navigation {
+  background-color: white; /* Set the background color */
+  height: 100%; /* Stretch to full height */
+  padding: 10px 0; /* Add some padding */
+}
+
+.list-group.wd > .list-group-item {
+  border: 0; /* Remove default border */
+  padding: 15px 20px; /* Increase padding for better usability */
+}
+
+.list-group.wd > .list-group-item.active {
+  color: black; /* Active link text color */
+  background-color: white; /* Active link background color */
+  border-left: 3px solid black !important; /* Left border for active link */
+}
+
+.list-group.wd > .list-group-item.text-danger {
+  color: red; /* Set text color for non-active links */
+}
+
+.list-group.wd > .list-group-item:hover {
+  background-color: #f8f9fa; /* Light background on hover */
+}
