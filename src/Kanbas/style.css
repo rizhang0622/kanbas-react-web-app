@@ -34,3 +34,13 @@ body {
 .list-group.wd > .list-group-item:hover {
   background-color: #f8f9fa; /* Light background on hover */
 }
+
+
+#wd-course-status {
+  background-color: #f9f9f9; /* Light background */
+  border: 1px solid #ddd; /* Subtle border */
+}
+
+#wd-course-status h2 {
+  margin-bottom: 1rem; /* Space below title */
+}
