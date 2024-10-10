@@ -44,3 +44,9 @@ body {
 #wd-course-status h2 {
   margin-bottom: 1rem; /* Space below title */
 }
+
+#wd-assignment-list .list-group-item {
+ 
+    border-left: 3px solid green !important;
+
+}
