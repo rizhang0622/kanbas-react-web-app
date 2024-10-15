@@ -20,7 +20,11 @@ export default function Profile() {
         />
       </div>
       <div className="mb-3">
-        <input defaultValue="Alice" placeholder="First Name" className="form-control" />
+        <input
+          defaultValue="Alice"
+          placeholder="First Name"
+          className="form-control"
+        />
       </div>
       <div className="mb-3">
         <input
@@ -30,11 +34,7 @@ export default function Profile() {
         />
       </div>
       <div className="mb-3">
-        <input
-          defaultValue="2000-01-01"
-          type="date"
-          className="form-control"
-        />
+        <input defaultValue="2000-01-01" type="date" className="form-control" />
       </div>
       <div className="mb-3">
         <input

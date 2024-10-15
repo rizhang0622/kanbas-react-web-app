@@ -8,10 +8,18 @@ export default function Signup() {
         <input placeholder="Username" className="form-control" />
       </div>
       <div className="mb-3">
-        <input placeholder="Password" type="password" className="form-control" />
+        <input
+          placeholder="Password"
+          type="password"
+          className="form-control"
+        />
       </div>
       <div className="mb-3">
-        <input placeholder="Verify Password" type="password" className="form-control" />
+        <input
+          placeholder="Verify Password"
+          type="password"
+          className="form-control"
+        />
       </div>
       <Link to="/Kanbas/Account/Profile" className="btn btn-primary w-100 mb-2">
         Sign up

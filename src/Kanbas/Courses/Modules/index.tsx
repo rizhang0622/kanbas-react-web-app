@@ -1,8 +1,7 @@
-// src/Kanbas/Courses/Modules/index.tsx
 import ModulesControls from "./ModulesControls";
 import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlButtons from "./ModuleControlButtons";
-import "./style.css"
+import "./style.css";
 
 export default function Modules() {
   return (
