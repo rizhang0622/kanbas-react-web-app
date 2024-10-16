@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaSearch, FaPlus, FaClipboardList, FaEllipsisV } from "react-icons/fa";
 import GreenCheckmark from "../Modules/GreenCheckmark";
 import ModuleControlButtons from "../Modules/ModuleControlButtons";
+import db from "../../Database";
 
 export default function Assignments() {
+  const { cid } = useParams(); // Get the course ID from the URL
+  const assignments = db.assignments; // Retrieve all assignments from the database
+
+  const filteredAssignments = assignments.filter(
+    (assignment) => assignment.course === cid // Filter assignments for the current course
+  );
+
   return (
     <div id="wd-assignments" className="p-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -33,47 +41,46 @@ export default function Assignments() {
       </h3>
 
       <ul id="wd-assignment-list" className="list-group">
-        {[
-          "A1 - ENV + HTML",
-          "A2 - CSS + BOOTSTRAP",
-          "A3 - JAVASCRIPT + REACT",
-        ].map((assignment, index) => (
-          <li
-            key={index}
-            className="list-group-item d-flex justify-content-between align-items-center border-0  mb-2"
-          >
-            <div className="d-flex align-items-center">
-              <span className="text-success me-2">
-                <FaClipboardList />
-              </span>
+        {filteredAssignments.length > 0 ? (
+          filteredAssignments.map((assignment) => (
+            <li
+              key={assignment._id}
+              className="list-group-item d-flex justify-content-between align-items-center border-0 mb-2"
+            >
+              <div className="d-flex align-items-center">
+                <span className="text-success me-2">
+                  <FaClipboardList />
+                </span>
+                <span className="text-muted me-2">
+                  <FaEllipsisV />
+                </span>
+              </div>
+
+              <div>
+                <Link
+                  className="wd-assignment-link me-2"
+                  to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} // Link to the assignment editor
+                >
+                  {assignment.title}
+                </Link>
+
+                <br />
+                <span className="text-danger">| Multiple Modules</span>
+
+                <span>
+                  | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts
+                </span>
+              </div>
+
+              <GreenCheckmark />
               <span className="text-muted me-2">
                 <FaEllipsisV />
               </span>
-            </div>
-
-            <div>
-              <Link
-                className="wd-assignment-link me-2"
-                to={`/Kanbas/Courses/1234/Assignments/12${index + 3}`}
-              >
-                {assignment}
-              </Link>
-
-              <br />
-              <span className="text-danger">| Multiple Modules</span>
-
-              <span>
-                | Not available until May {6 + index} at 12:00am | Due May{" "}
-                {13 + index} at 11:59pm | 100 pts
-              </span>
-            </div>
-
-            <GreenCheckmark />
-            <span className="text-muted me-2">
-              <FaEllipsisV />
-            </span>
-          </li>
-        ))}
+            </li>
+          ))
+        ) : (
+          <li className="list-group-item">No assignments available for this course.</li>
+        )}
       </ul>
     </div>
   );
