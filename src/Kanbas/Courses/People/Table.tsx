@@ -24,7 +24,8 @@ export default function PeopleTable() {
           {users
             .filter((user) =>
               enrollments.some(
-                (enrollment) => enrollment.user === user._id && enrollment.course === cid
+                (enrollment) =>
+                  enrollment.user === user._id && enrollment.course === cid
               )
             )
             .map((user) => (

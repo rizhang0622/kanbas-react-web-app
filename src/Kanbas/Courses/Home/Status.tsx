@@ -1,4 +1,3 @@
-// src/Kanbas/Courses/Home/Status.tsx
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import { FaCheckCircle, FaCog } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
@@ -8,7 +7,11 @@ import { FaBullhorn } from "react-icons/fa";
 
 export default function CourseStatus() {
   return (
-    <div id="wd-course-status" className="p-3 border rounded bg-light" style={{ width: "300px" }}>
+    <div
+      id="wd-course-status"
+      className="p-3 border rounded bg-light"
+      style={{ width: "300px" }}
+    >
       <h2 className="fs-5">Course Status</h2>
       <div className="d-flex mb-2">
         <button className="btn btn-lg btn-secondary me-1">

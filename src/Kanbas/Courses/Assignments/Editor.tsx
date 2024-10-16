@@ -1,40 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import db from "../../Database";
 
 interface Assignment {
   _id: string;
   title: string;
   course: string;
-  description?: string; // Optional
-  points?: number; // Optional
-  assignTo?: string; // Optional
-  dueDate?: string; // Optional
-  availableFrom?: string; // Optional
-  availableUntil?: string; // Optional
+  description?: string;
+  points?: number;
+  assignTo?: string;
+  dueDate?: string;
+  availableFrom?: string;
+  availableUntil?: string;
 }
 
 const Editor: React.FC = () => {
-  const { aid: assignmentId, cid: courseId } = useParams<{ aid: string; cid: string }>();
+  const { aid: assignmentId, cid: courseId } = useParams<{
+    aid: string;
+    cid: string;
+  }>();
   const [assignment, setAssignment] = useState<Assignment | null>(null);
-  const [assignmentName, setAssignmentName] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  const [assignmentName, setAssignmentName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [points, setPoints] = useState<number | undefined>(undefined);
-  const [assignTo, setAssignTo] = useState<string>('');
-  const [dueDate, setDueDate] = useState<string>('');
-  const [availableFrom, setAvailableFrom] = useState<string>('');
-  const [availableUntil, setAvailableUntil] = useState<string>('');
+  const [assignTo, setAssignTo] = useState<string>("");
+  const [dueDate, setDueDate] = useState<string>("");
+  const [availableFrom, setAvailableFrom] = useState<string>("");
+  const [availableUntil, setAvailableUntil] = useState<string>("");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAssignment = () => {
-      const foundAssignment = db.assignments.find((a) => a._id === assignmentId);
+      const foundAssignment = db.assignments.find(
+        (a) => a._id === assignmentId
+      );
 
       if (foundAssignment) {
         setAssignment(foundAssignment);
       } else {
-        setAssignment(null); // Handle assignment not found if needed
+        setAssignment(null);
       }
     };
 
@@ -44,20 +49,18 @@ const Editor: React.FC = () => {
   useEffect(() => {
     if (assignment) {
       setAssignmentName(assignment.title);
-      setDescription(assignment.description || '');
+      setDescription(assignment.description || "");
       setPoints(assignment.points);
-      setAssignTo(assignment.assignTo || '');
-      setDueDate(assignment.dueDate || '');
-      setAvailableFrom(assignment.availableFrom || '');
-      setAvailableUntil(assignment.availableUntil || '');
+      setAssignTo(assignment.assignTo || "");
+      setDueDate(assignment.dueDate || "");
+      setAvailableFrom(assignment.availableFrom || "");
+      setAvailableUntil(assignment.availableUntil || "");
     }
   }, [assignment]);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implement save logic here
 
-    // Navigate back to the Assignments screen
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };
 
@@ -67,7 +70,9 @@ const Editor: React.FC = () => {
       <form onSubmit={handleSave}>
         {/* Assignment Name */}
         <div className="row mb-3">
-          <label htmlFor="wd-name" className="col-form-label col-sm-2">Assignment Name</label>
+          <label htmlFor="wd-name" className="col-form-label col-sm-2">
+            Assignment Name
+          </label>
           <div className="col-sm-10">
             <input
               id="wd-name"
@@ -80,7 +85,9 @@ const Editor: React.FC = () => {
 
         {/* Description */}
         <div className="row mb-3">
-          <label htmlFor="wd-description" className="col-form-label col-sm-2">Description</label>
+          <label htmlFor="wd-description" className="col-form-label col-sm-2">
+            Description
+          </label>
           <div className="col-sm-10">
             <textarea
               id="wd-description"
@@ -94,7 +101,9 @@ const Editor: React.FC = () => {
 
         {/* Points */}
         <div className="row mb-3">
-          <label htmlFor="wd-points" className="col-form-label col-sm-2">Points</label>
+          <label htmlFor="wd-points" className="col-form-label col-sm-2">
+            Points
+          </label>
           <div className="col-sm-10">
             <input
               id="wd-points"
@@ -108,7 +117,9 @@ const Editor: React.FC = () => {
 
         {/* Assign To */}
         <div className="row mb-3">
-          <label htmlFor="wd-assign-to" className="col-form-label col-sm-2">Assign To</label>
+          <label htmlFor="wd-assign-to" className="col-form-label col-sm-2">
+            Assign To
+          </label>
           <div className="col-sm-10">
             <input
               id="wd-assign-to"
@@ -122,7 +133,9 @@ const Editor: React.FC = () => {
 
         {/* Due Date */}
         <div className="row mb-3">
-          <label htmlFor="wd-due-date" className="col-form-label col-sm-2">Due Date</label>
+          <label htmlFor="wd-due-date" className="col-form-label col-sm-2">
+            Due Date
+          </label>
           <div className="col-sm-10">
             <input
               type="date"
@@ -136,25 +149,51 @@ const Editor: React.FC = () => {
 
         {/* Available From */}
         <div className="row mb-3">
-          <label htmlFor="wd-available-from" className="col-form-label col-sm-2">Available From</label>
+          <label
+            htmlFor="wd-available-from"
+            className="col-form-label col-sm-2"
+          >
+            Available From
+          </label>
           <div className="col-sm-10">
-            <input type="date" id="wd-available-from" className="form-control" value={availableFrom} onChange={(e) => setAvailableFrom(e.target.value)} />
+            <input
+              type="date"
+              id="wd-available-from"
+              className="form-control"
+              value={availableFrom}
+              onChange={(e) => setAvailableFrom(e.target.value)}
+            />
           </div>
         </div>
 
         {/* Available Until */}
         <div className="row mb-3">
-          <label htmlFor="wd-available-until" className="col-form-label col-sm-2">Available Until</label>
+          <label
+            htmlFor="wd-available-until"
+            className="col-form-label col-sm-2"
+          >
+            Available Until
+          </label>
           <div className="col-sm-10">
-            <input type="date" id="wd-available-until" className="form-control" value={availableUntil} onChange={(e) => setAvailableUntil(e.target.value)} />
+            <input
+              type="date"
+              id="wd-available-until"
+              className="form-control"
+              value={availableUntil}
+              onChange={(e) => setAvailableUntil(e.target.value)}
+            />
           </div>
         </div>
 
         {/* Action Buttons */}
         <div className="d-flex justify-content-end">
-          <button type="submit" className="btn btn-success me-2">Save</button>
+          <button type="submit" className="btn btn-success me-2">
+            Save
+          </button>
           <Link to={`/Kanbas/Courses/${courseId}/Assignments`}>
-            <button type="button" className="btn btn-secondary">Cancel</button>
+            <button type="button" className="btn btn-secondary">
+              Cancel
+            </button>
           </Link>
         </div>
       </form>

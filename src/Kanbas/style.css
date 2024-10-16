@@ -35,7 +35,6 @@ body {
   background-color: #f8f9fa; /* Light background on hover */
 }
 
-
 #wd-course-status {
   background-color: #f9f9f9; /* Light background */
   border: 1px solid #ddd; /* Subtle border */
@@ -46,7 +45,5 @@ body {
 }
 
 #wd-assignment-list .list-group-item {
- 
-    border-left: 3px solid green !important;
-
+  border-left: 3px solid green !important;
 }

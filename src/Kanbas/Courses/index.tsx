@@ -1,4 +1,4 @@
-import  db  from "../Database";
+import db from "../Database";
 import CoursesNavigation from "./Navigation";
 import Home from "./Home";
 import Modules from "./Modules";
@@ -9,22 +9,21 @@ import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
 
 export default function Courses() {
-  const { cid } = useParams(); // Get the course ID from the URL
-  const course = db.courses.find((course) => course._id === cid); // Find the course by ID
-  const { pathname } = useLocation(); // Get the current path
+  const { cid } = useParams();
+  const course = db.courses.find((course) => course._id === cid);
+  const { pathname } = useLocation();
 
   if (!course) {
-    return <Navigate to="/Kanbas/Dashboard" />; // Redirect if the course is not found
+    return <Navigate to="/Kanbas/Dashboard" />;
   }
 
-  // Extract section name from the path
-  const section = pathname.split("/").pop(); // Get the last part of the path
+  const section = pathname.split("/").pop();
 
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
         <FaAlignJustify className="me-4 fs-4 mb-1" />
-        {course.name} &gt; {section} {/* Display the course name and section */}
+        {course.name} &gt; {section}
       </h2>
       <hr />
       <div className="d-flex">

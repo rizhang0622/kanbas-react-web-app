@@ -5,11 +5,11 @@ import ModuleControlButtons from "../Modules/ModuleControlButtons";
 import db from "../../Database";
 
 export default function Assignments() {
-  const { cid } = useParams(); // Get the course ID from the URL
-  const assignments = db.assignments; // Retrieve all assignments from the database
+  const { cid } = useParams();
+  const assignments = db.assignments;
 
   const filteredAssignments = assignments.filter(
-    (assignment) => assignment.course === cid // Filter assignments for the current course
+    (assignment) => assignment.course === cid
   );
 
   return (
@@ -59,7 +59,7 @@ export default function Assignments() {
               <div>
                 <Link
                   className="wd-assignment-link me-2"
-                  to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} // Link to the assignment editor
+                  to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} 
                 >
                   {assignment.title}
                 </Link>
@@ -68,7 +68,8 @@ export default function Assignments() {
                 <span className="text-danger">| Multiple Modules</span>
 
                 <span>
-                  | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts
+                  | Not available until May 6 at 12:00am | Due May 13 at 11:59pm
+                  | 100 pts
                 </span>
               </div>
 
@@ -79,7 +80,9 @@ export default function Assignments() {
             </li>
           ))
         ) : (
-          <li className="list-group-item">No assignments available for this course.</li>
+          <li className="list-group-item">
+            No assignments available for this course.
+          </li>
         )}
       </ul>
     </div>
