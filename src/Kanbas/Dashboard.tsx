@@ -16,9 +16,9 @@ export default function Dashboard() {
             <div className="card">
               <Link
                 className="wd-dashboard-course-link text-decoration-none"
-                to={`/Kanbas/Courses/${course._id}/Home`} // use course._id for navigation
+                to={`/Kanbas/Courses/${course._id}/Home`} 
               >
-                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                <img src="/images/reactjs.png" width="100%" height={160} />
                 <div className="card-body">
                   <h5 className="card-title">{course.name}</h5>
                   <p className="card-text">{course.description}</p>

@@ -62,68 +62,101 @@ const Editor: React.FC = () => {
   };
 
   return (
-    <div>
+    <div id="wd-assignments-editor" className="container mt-4 p-4">
       <h2>Edit Assignment</h2>
       <form onSubmit={handleSave}>
-        <div>
-          <label>Assignment Name:</label>
-          <input
-            type="text"
-            value={assignmentName}
-            onChange={(e) => setAssignmentName(e.target.value)}
-          />
+        {/* Assignment Name */}
+        <div className="row mb-3">
+          <label htmlFor="wd-name" className="col-form-label col-sm-2">Assignment Name</label>
+          <div className="col-sm-10">
+            <input
+              id="wd-name"
+              className="form-control"
+              value={assignmentName}
+              onChange={(e) => setAssignmentName(e.target.value)}
+            />
+          </div>
         </div>
-        <div>
-          <label>Description:</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+
+        {/* Description */}
+        <div className="row mb-3">
+          <label htmlFor="wd-description" className="col-form-label col-sm-2">Description</label>
+          <div className="col-sm-10">
+            <textarea
+              id="wd-description"
+              className="form-control"
+              rows={5}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
         </div>
-        <div>
-          <label>Points:</label>
-          <input
-            type="number"
-            value={points}
-            onChange={(e) => setPoints(Number(e.target.value))}
-          />
+
+        {/* Points */}
+        <div className="row mb-3">
+          <label htmlFor="wd-points" className="col-form-label col-sm-2">Points</label>
+          <div className="col-sm-10">
+            <input
+              id="wd-points"
+              type="number"
+              className="form-control"
+              value={points}
+              onChange={(e) => setPoints(Number(e.target.value))}
+            />
+          </div>
         </div>
-        <div>
-          <label>Assign To:</label>
-          <input
-            type="text"
-            value={assignTo}
-            onChange={(e) => setAssignTo(e.target.value)}
-          />
+
+        {/* Assign To */}
+        <div className="row mb-3">
+          <label htmlFor="wd-assign-to" className="col-form-label col-sm-2">Assign To</label>
+          <div className="col-sm-10">
+            <input
+              id="wd-assign-to"
+              className="form-control"
+              value={assignTo}
+              onChange={(e) => setAssignTo(e.target.value)}
+              placeholder="Everyone"
+            />
+          </div>
         </div>
-        <div>
-          <label>Due Date:</label>
-          <input
-            type="date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
+
+        {/* Due Date */}
+        <div className="row mb-3">
+          <label htmlFor="wd-due-date" className="col-form-label col-sm-2">Due Date</label>
+          <div className="col-sm-10">
+            <input
+              type="date"
+              id="wd-due-date"
+              className="form-control"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+            />
+          </div>
         </div>
-        <div>
-          <label>Available From:</label>
-          <input
-            type="date"
-            value={availableFrom}
-            onChange={(e) => setAvailableFrom(e.target.value)}
-          />
+
+        {/* Available From */}
+        <div className="row mb-3">
+          <label htmlFor="wd-available-from" className="col-form-label col-sm-2">Available From</label>
+          <div className="col-sm-10">
+            <input type="date" id="wd-available-from" className="form-control" value={availableFrom} onChange={(e) => setAvailableFrom(e.target.value)} />
+          </div>
         </div>
-        <div>
-          <label>Available Until:</label>
-          <input
-            type="date"
-            value={availableUntil}
-            onChange={(e) => setAvailableUntil(e.target.value)}
-          />
+
+        {/* Available Until */}
+        <div className="row mb-3">
+          <label htmlFor="wd-available-until" className="col-form-label col-sm-2">Available Until</label>
+          <div className="col-sm-10">
+            <input type="date" id="wd-available-until" className="form-control" value={availableUntil} onChange={(e) => setAvailableUntil(e.target.value)} />
+          </div>
         </div>
-        <button type="submit">Save</button>
-        <Link to={`/Kanbas/Courses/${courseId}/Assignments`}>
-          <button type="button">Cancel</button>
-        </Link>
+
+        {/* Action Buttons */}
+        <div className="d-flex justify-content-end">
+          <button type="submit" className="btn btn-success me-2">Save</button>
+          <Link to={`/Kanbas/Courses/${courseId}/Assignments`}>
+            <button type="button" className="btn btn-secondary">Cancel</button>
+          </Link>
+        </div>
       </form>
     </div>
   );
