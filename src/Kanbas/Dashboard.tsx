@@ -21,7 +21,7 @@ export default function Dashboard() {
                 <img src="/images/reactjs.png" width="100%" height={160} />
                 <div className="card-body">
                   <h5 className="card-title">{course.name}</h5>
-                  <p className="card-text">{course.description}</p>
+                  <p className="card-text">{course.description.split(' ').slice(0, 10).join(' ')}</p>
                   <button className="btn btn-primary">Go</button>
                 </div>
               </Link>
