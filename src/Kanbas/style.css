@@ -171,3 +171,35 @@ hr {
     grid-template-columns: 1fr; /* 1 course per row */
   }
 }
+
+
+
+/* Default layout 
+#wd-home {
+  display: grid;
+  grid-template-columns: 250px 1fr 300px; 
+  gap: 1rem;
+}*/
+
+/* First breakpoint: hide the last column (Course Status) */
+@media (max-width: 1250px) {
+  #wd-home {
+    grid-template-columns: 250px 1fr; /* Sidebar, Modules only */
+  }
+  #wd-course-status {
+    display: none;
+  }
+}
+
+/* Second breakpoint: hide both navigation sidebars */
+@media (max-width: 950px) {
+  #wd-home {
+    grid-template-columns: 1fr; /* Modules takes full width */
+  }
+  #wd-sidebar {
+    display: none;
+  }
+  #wd-course-status {
+    display: none;
+  }
+}
