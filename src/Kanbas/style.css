@@ -4,12 +4,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (min-width: 768px) {
-  #wd-kanbas .wd-main-content-offset {
-    padding-left: 140px !important; /* Offset for sidebar */
-  }
-}
-
 #wd-courses-navigation {
   background-color: white; /* Set the background color */
   height: 100%; /* Stretch to full height */
@@ -44,6 +38,201 @@ body {
   margin-bottom: 1rem; /* Space below title */
 }
 
+/*Assignments*/
+
 #wd-assignment-list .list-group-item {
   border-left: 3px solid green !important;
+}
+
+#wd-assignments-editor {
+  width: 50vw;
+}
+
+@media (max-width: 1200px) {
+  #wd-assignments-editor {
+    width: 50vw !important;
+  }
+}
+
+@media (max-width: 992px) {
+  #wd-assignments-editor {
+    width: 60vw !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #wd-assignments-editor {
+    width: 90vw !important;
+  }
+}
+
+.wd-submission-type-group{
+  border: black 1px !important;
+}
+
+/*Dashboard*/
+/* Dashboard Title Styling */
+#wd-dashboard-title {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+/* Horizontal Rule Styling */
+hr {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Published Courses Subtitle Styling */
+#wd-dashboard-published {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+/* Course Container Styling */
+#wd-dashboard-courses {
+  display: grid;
+  /*grid-template-columns: repeat(auto-fit, minmax(250px, 270px));*/
+  gap: 30px;
+  justify-content: center;
+  margin-left: 30px; /* Space between sidebar and courses */
+}
+
+/* Course Card Styling */
+.wd-dashboard-course {
+  background-color: #fff; /* White background for card */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 270px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+/* Course Title and Metadata */
+.wd-dashboard-course-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #0056b3; /* Blue color similar to link color */
+  margin: 8px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+/* Image Styling */
+.card-img-top {
+  background-color: #0056b3; /* Solid blue color if no image is provided */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  width: 100%;
+  height: 120px;
+}
+
+/* Icon Button on Top Right */
+.card-options {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #777;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 8px;
+  font-size: 1em;
+  text-align: center;
+}
+
+/* Responsive Layout */
+#wd-dashboard-courses {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* 4 courses per row at the widest screen */
+  gap: 1rem; /* Adjusts spacing between cards */
+}
+
+@media (max-width: 1200px) {
+  #wd-dashboard-courses {
+    grid-template-columns: repeat(3, 1fr); /* 3 courses per row */
+  }
+}
+
+@media (max-width: 992px) {
+  #wd-dashboard-courses {
+    grid-template-columns: repeat(2, 1fr); /* 2 courses per row */
+  }
+}
+
+@media (max-width: 768px) {
+  #wd-dashboard-courses {
+    grid-template-columns: 1fr; /* 1 course per row */
+  }
+}
+/*
+#wd-home {
+  display: grid;
+  grid-template-columns: 250px 300px 300px; 
+  gap: 1rem;
+}*/
+
+#wd-modules {
+  width: 60vw;
+}
+
+/* Offset for sidebar */
+@media (min-width: 768px) {
+  #wd-kanbas .wd-main-content-offset {
+    padding-left: 140px !important;
+  }
+}
+
+/* First breakpoint: hide the last column (Course Status) */
+@media (max-width: 1250px) {
+  /*#wd-home {
+    grid-template-columns: 250px 1fr; 
+  }*/
+  #wd-course-status {
+    display: none;
+  }
+  /*
+  #wd-modules {
+    width: 90vw;
+  }*/
+}
+
+/* Second breakpoint: hide both navigation sidebars */
+@media (max-width: 950px) {
+  /*#wd-home {
+    grid-template-columns: 1fr; 
+  }*/
+  #wd-sidebar {
+    display: none;
+  }
+  #wd-course-status {
+    display: none;
+  }
+
+  #wd-modules {
+    width: 90vw;
+  }
 }
