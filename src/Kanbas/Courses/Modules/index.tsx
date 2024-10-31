@@ -22,6 +22,12 @@ export default function Modules() {
     setModuleName("");
   };
 
+  // Define the deleteModule function
+  const deleteModule = (moduleId: string) => {
+    setModules(modules.filter((m) => m._id !== moduleId));
+    console.log("Deleted module with ID:", moduleId);
+  };
+
   return (
     <div>
       <ModulesControls
@@ -43,7 +49,10 @@ export default function Modules() {
             >
               <div className="wd-title p-3 ps-2 bg-secondary">
                 {module.name}
-                <ModuleControlButtons />
+                <ModuleControlButtons
+                  moduleId={module._id} // Pass the module ID
+                  deleteModule={deleteModule} // Pass the delete function
+                />
               </div>
               {module.lessons && module.lessons.length > 0 && (
                 <ul className="wd-lessons list-group rounded-0">
