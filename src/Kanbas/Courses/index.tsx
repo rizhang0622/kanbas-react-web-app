@@ -1,29 +1,26 @@
-import db from "../Database";
+import { useParams, Navigate } from "react-router";
 import CoursesNavigation from "./Navigation";
 import Home from "./Home";
 import Modules from "./Modules";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import PeopleTable from "./People/Table";
-import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
+import { Routes, Route } from "react-router";
 import { FaAlignJustify } from "react-icons/fa";
 
-export default function Courses() {
+export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
-  const course = db.courses.find((course) => course._id === cid);
-  const { pathname } = useLocation();
+  const course = courses.find((course) => course._id === cid);
 
   if (!course) {
     return <Navigate to="/Kanbas/Dashboard" />;
   }
 
-  const section = pathname.split("/").pop();
-
   return (
     <div id="wd-courses">
       <h2 className="text-danger">
         <FaAlignJustify className="me-4 fs-4 mb-1" />
-        {course.name} &gt; {section}
+        {course.name}
       </h2>
       <hr />
       <div className="d-flex">
