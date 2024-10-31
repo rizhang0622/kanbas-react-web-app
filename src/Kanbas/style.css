@@ -32,15 +32,42 @@ body {
 #wd-course-status {
   background-color: #f9f9f9; /* Light background */
   border: 1px solid #ddd; /* Subtle border */
-  
 }
 
 #wd-course-status h2 {
   margin-bottom: 1rem; /* Space below title */
 }
 
+/*Assignments*/
+
 #wd-assignment-list .list-group-item {
   border-left: 3px solid green !important;
+}
+
+#wd-assignments-editor {
+  width: 50vw;
+}
+
+@media (max-width: 1200px) {
+  #wd-assignments-editor {
+    width: 50vw !important;
+  }
+}
+
+@media (max-width: 992px) {
+  #wd-assignments-editor {
+    width: 60vw !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #wd-assignments-editor {
+    width: 90vw !important;
+  }
+}
+
+.wd-submission-type-group{
+  border: black 1px !important;
 }
 
 /*Dashboard*/
@@ -177,8 +204,6 @@ hr {
   #wd-kanbas .wd-main-content-offset {
     padding-left: 140px !important;
   }
-  
-  
 }
 
 /* First breakpoint: hide the last column (Course Status) */
@@ -193,7 +218,6 @@ hr {
   #wd-modules {
     width: 90vw;
   }*/
-  
 }
 
 /* Second breakpoint: hide both navigation sidebars */
@@ -207,10 +231,8 @@ hr {
   #wd-course-status {
     display: none;
   }
-  
+
   #wd-modules {
     width: 90vw;
   }
- 
-  
 }
