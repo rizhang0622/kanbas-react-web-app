@@ -11,8 +11,10 @@ export default function Modules() {
   const { cid } = useParams();
   const [modules, setModules] = useState<any[]>(db.modules);
   const [moduleName, setModuleName] = useState("");
+  const [showModal, setShowModal] = useState(false); // Manage modal visibility
 
   const addModule = () => {
+    console.log("Adding module:", moduleName);
     setModules([
       ...modules,
       { _id: new Date().getTime().toString(), name: moduleName, course: cid, lessons: [] },
@@ -26,6 +28,8 @@ export default function Modules() {
         moduleName={moduleName}
         setModuleName={setModuleName}
         addModule={addModule}
+        showModal={showModal}
+        setShowModal={setShowModal} // Pass the function to manage modal visibility
       />
       <br />
       <br />

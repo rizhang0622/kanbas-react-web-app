@@ -1,27 +1,33 @@
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
-import ModuleEditor from "./ModuleEditor"; 
+import ModuleEditor from "./ModuleEditor";
 import { useState } from "react";
 
 interface ModulesControlsProps {
   moduleName: string;
   setModuleName: (name: string) => void;
   addModule: () => void;
+  showModal: boolean;
+  setShowModal: (show: boolean) => void; // Add show/hide function
 }
 
 export default function ModulesControls({
   moduleName,
   setModuleName,
   addModule,
+  showModal,
+  setShowModal,
 }: ModulesControlsProps) {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <div id="wd-modules-controls" className="text-nowrap">
       <button
         id="wd-add-module-btn"
         className="btn btn-lg btn-danger me-1 float-end"
-        onClick={() => setShowModal(true)}
+        data-bs-toggle="modal" data-bs-target="#wd-add-module-dialog"
+        onClick={() => {
+          console.log("Add Module button clicked!");
+          setShowModal(true);
+        }} // Show modal when clicked
       >
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Module
@@ -38,35 +44,57 @@ export default function ModulesControls({
         </button>
         <ul className="dropdown-menu">
           <li>
-            <a id="wd-publish-all-modules-and-items-btn" className="dropdown-item" href="#">
+            <a
+              id="wd-publish-all-modules-and-items-btn"
+              className="dropdown-item"
+              href="#"
+            >
               <GreenCheckmark />
               Publish all modules and items
             </a>
           </li>
           <li>
-            <a id="wd-publish-modules-only-button" className="dropdown-item" href="#">
+            <a
+              id="wd-publish-modules-only-button"
+              className="dropdown-item"
+              href="#"
+            >
               <GreenCheckmark />
               Publish modules only
             </a>
           </li>
           <li>
-            <a id="wd-unpublish-all-modules-and-items" className="dropdown-item" href="#">
+            <a
+              id="wd-unpublish-all-modules-and-items"
+              className="dropdown-item"
+              href="#"
+            >
               <GreenCheckmark />
               Unpublish all modules and items
             </a>
           </li>
           <li>
-            <a id="wd-unpublish-modules-only" className="dropdown-item" href="#">
+            <a
+              id="wd-unpublish-modules-only"
+              className="dropdown-item"
+              href="#"
+            >
               <GreenCheckmark />
               Unpublish modules only
             </a>
           </li>
         </ul>
       </div>
-      <button id="wd-view-progress" className="btn btn-lg btn-light me-1 float-end">
+      <button
+        id="wd-view-progress"
+        className="btn btn-lg btn-light me-1 float-end"
+      >
         View Progress
       </button>
-      <button id="wd-collapse-all" className="btn btn-lg btn-light me-1 float-end">
+      <button
+        id="wd-collapse-all"
+        className="btn btn-lg btn-light me-1 float-end"
+      >
         Collapse All
       </button>
 
