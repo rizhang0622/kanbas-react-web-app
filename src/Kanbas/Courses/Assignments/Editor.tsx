@@ -60,7 +60,7 @@ const Editor: React.FC = () => {
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-
+    // Here you could add code to save the updated assignment to the database
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };
 
@@ -70,10 +70,8 @@ const Editor: React.FC = () => {
       <form onSubmit={handleSave}>
         {/* Assignment Name */}
         <div className="row mb-3">
-          <label htmlFor="wd-name" className="col-form-label col-sm-2">
-            Assignment Name
-          </label>
-          <div className="col-sm-10">
+          <p className="col-form-label col-sm-2 w-100">Assignment Name</p>
+          <div className="col-sm-10 w-100">
             <input
               id="wd-name"
               className="form-control"
@@ -85,16 +83,13 @@ const Editor: React.FC = () => {
 
         {/* Description */}
         <div className="row mb-3">
-          <label htmlFor="wd-description" className="col-form-label col-sm-2">
-            Description
-          </label>
-          <div className="col-sm-10">
+          <div className="col-sm-10 w-100">
             <textarea
               id="wd-description"
               className="form-control"
-              rows={5}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              placeholder="Describe the assignment..."
             />
           </div>
         </div>
@@ -115,18 +110,88 @@ const Editor: React.FC = () => {
           </div>
         </div>
 
-        {/* Assign To */}
+        {/* Assignment Group */}
         <div className="row mb-3">
-          <label htmlFor="wd-assign-to" className="col-form-label col-sm-2">
-            Assign To
+          <label htmlFor="wd-group" className="col-form-label col-sm-2">
+            Assignment Group
           </label>
           <div className="col-sm-10">
+            <select id="wd-group" className="form-select">
+              <option>Group 1</option>
+              <option>Group 2</option>
+              <option>Group 3</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Display Grade As */}
+        <div className="row mb-3">
+          <label
+            htmlFor="wd-display-grade-as"
+            className="col-form-label col-sm-2"
+          >
+            Display Grade As:
+          </label>
+          <div className="col-sm-10">
+            <select id="wd-display-grade-as" className="form-select">
+              <option>Percentage</option>
+              <option>Points</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Submission Type */}
+        <div className="row mb-3">
+          <label htmlFor="wd-submission-type" className="col-form-label col-sm-2">
+            Submission Type:
+          </label>
+          <div className="col-sm-10 wd-submission-type-group p-1">
+            <select id="wd-submission-type" className="form-select">
+              <option>Online</option>
+              <option>Offline</option>
+            </select>
+
+            <strong>Online Entry Options:</strong>
+            <div className="mb-2">
+              <label>
+                <input type="checkbox" id="wd-text-entry" /> Text entry
+              </label>
+            </div>
+            <div className="mb-2">
+              <label>
+                <input type="checkbox" id="wd-website-url" /> Website URL
+              </label>
+            </div>
+            <div className="mb-2">
+              <label>
+                <input type="checkbox" id="wd-media-recordings" /> Media
+                Recordings
+              </label>
+            </div>
+            <div className="mb-2">
+              <label>
+                <input type="checkbox" id="wd-student-annotation" /> Student
+                Annotation
+              </label>
+            </div>
+            <div className="mb-2">
+              <label>
+                <input type="checkbox" id="wd-file-upload" /> File Uploads
+              </label>
+            </div>
+          </div>
+        </div>
+
+        {/* Assign To */}
+        <div className="row mb-3">
+          <label className="col-form-label col-sm-2">Assign:</label>
+          <div className="col-form-label col-sm-10 mb-3">
+            <label className="col-form-label col-sm-8">Assign to:</label>
             <input
               id="wd-assign-to"
               className="form-control"
               value={assignTo}
               onChange={(e) => setAssignTo(e.target.value)}
-              placeholder="Everyone"
             />
           </div>
         </div>
@@ -134,7 +199,7 @@ const Editor: React.FC = () => {
         {/* Due Date */}
         <div className="row mb-3">
           <label htmlFor="wd-due-date" className="col-form-label col-sm-2">
-            Due Date
+            Due:
           </label>
           <div className="col-sm-10">
             <input
@@ -147,54 +212,51 @@ const Editor: React.FC = () => {
           </div>
         </div>
 
-        {/* Available From */}
+        {/* Available From & Until */}
         <div className="row mb-3">
-          <label
-            htmlFor="wd-available-from"
-            className="col-form-label col-sm-2"
-          >
-            Available From
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="date"
-              id="wd-available-from"
-              className="form-control"
-              value={availableFrom}
-              onChange={(e) => setAvailableFrom(e.target.value)}
-            />
-          </div>
-        </div>
-
-        {/* Available Until */}
-        <div className="row mb-3">
-          <label
-            htmlFor="wd-available-until"
-            className="col-form-label col-sm-2"
-          >
-            Available Until
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="date"
-              id="wd-available-until"
-              className="form-control"
-              value={availableUntil}
-              onChange={(e) => setAvailableUntil(e.target.value)}
-            />
+          <label className="col-form-label col-sm-2">Availability:</label>
+          <div className="col-form-label col-sm-10 mb-3">
+            <div className="row">
+              <label htmlFor="wd-available-from" className="col-form-label col-sm-6">
+                Available From:
+              </label>
+              <label htmlFor="wd-available-until" className="col-form-label col-sm-6">
+                Available Until:
+              </label>
+            </div>
+            <div className="row">
+              <div className="col-sm-6">
+                <input
+                  type="date"
+                  id="wd-available-from"
+                  className="form-control"
+                  value={availableFrom}
+                  onChange={(e) => setAvailableFrom(e.target.value)}
+                />
+              </div>
+              <div className="col-sm-6">
+                <input
+                  type="date"
+                  id="wd-available-until"
+                  className="form-control"
+                  value={availableUntil}
+                  onChange={(e) => setAvailableUntil(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Action Buttons */}
         <div className="d-flex justify-content-end">
-          <button type="submit" className="btn btn-success me-2">
-            Save
-          </button>
           <Link to={`/Kanbas/Courses/${courseId}/Assignments`}>
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-secondary me-2">
               Cancel
             </button>
           </Link>
+          <button type="submit" className="btn btn-success">
+            Save
+          </button>
         </div>
       </form>
     </div>
