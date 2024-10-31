@@ -1,3 +1,7 @@
+import { RxCircleBackslash } from "react-icons/rx";
+
+
+
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import { FaCheckCircle, FaCog } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
@@ -15,10 +19,10 @@ export default function CourseStatus() {
       <h2 className="fs-5">Course Status</h2>
       <div className="d-flex mb-2">
         <button className="btn btn-lg btn-secondary me-1">
-          <MdDoNotDisturbAlt className="me-2" /> Unpublish
+          <RxCircleBackslash className="me-2" /> Unpublish
         </button>
         <button className="btn btn-lg btn-success">
-          <FaCheckCircle className="me-2" /> Publish
+          <FaCheckCircle className="me-2" /> Published
         </button>
       </div>
       <hr />
@@ -31,15 +35,17 @@ export default function CourseStatus() {
       <button className="btn btn-lg btn-secondary w-100 mb-1">
         <FaCog className="me-2" /> Choose Home Page
       </button>
+
+      <button className="btn btn-lg btn-secondary w-100 mb-1">
+        <AiOutlineShareAlt className="me-2" /> View Course Stream
+      </button>
       <button className="btn btn-lg btn-secondary w-100 mb-1">
         <FaBullhorn className="me-2" /> New Announcement
       </button>
       <button className="btn btn-lg btn-secondary w-100 mb-1">
         <FaCheckCircle className="me-2" /> New Analytics
       </button>
-      <button className="btn btn-lg btn-secondary w-100 mb-1">
-        <AiOutlineShareAlt className="me-2" /> View Course Stream
-      </button>
+
       <button className="btn btn-lg btn-secondary w-100 mb-1">
         <AiOutlineShareAlt className="me-2" /> View Course Notifications
       </button>
