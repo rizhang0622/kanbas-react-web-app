@@ -63,12 +63,19 @@ export default function Assignments() {
           </Link>
         </div>
       </div>
-
-      <h3 id="wd-assignments-title">
-        <BsGripVertical className="me-2 fs-3" />
-        ASSIGNMENTS <span className="text-muted">40% of Total</span>
-        <button className="btn btn-secondary float-end">+</button>
-      </h3>
+      <div className="wd-assignments-title list-group rounded-0">
+        <div className=" d-flex justify-content-between align-items-center mb-1 mt-1">
+          <div className="d-flex justify-content-between align-items-center">
+            <BsGripVertical className="me-2 fs-3" />
+            <p className="fs-5 m-0">ASSIGNMENTS</p>
+          </div>
+          <div className="d-flex justify-content-between align-items-center">
+            <p className="text-muted m-0 me-2 border border-1  rounded-pill">40% of Total</p>
+            <button className="btn ">+</button>
+            <BsGripVertical className="me-2 fs-3" />
+          </div>
+        </div>
+      </div>
 
       <ul id="wd-assignment-list" className="list-group rounded-0">
         {filteredAssignments.length > 0 ? (
@@ -78,13 +85,11 @@ export default function Assignments() {
               className="list-group-item d-flex align-items-center border-0 mb-0 p-3 ps-1"
             >
               <div className="d-flex align-items-center">
-              <BsGripVertical className="me-2 fs-3" />
+                <BsGripVertical className="me-2 fs-3" />
                 <span className="text-success me-2">
                   <FaClipboardList />
                 </span>
-                
               </div>
-
 
               <div className="ms-2">
                 <Link
@@ -98,14 +103,14 @@ export default function Assignments() {
                 <span className="text-danger"> Multiple Modules</span>
 
                 <span className="ms-1">
-                  | Not available until {assignment.availableFrom}  Due{" "}
+                  | Not available until {assignment.availableFrom} Due{" "}
                   {assignment.dueDate} | {assignment.points} pts
                 </span>
               </div>
-              
+
               <div className="text-muted me-2 float-end ms-auto p-2">
-              <GreenCheckmark />
-                <FaEllipsisV className="ms-3"/>
+                <GreenCheckmark />
+                <FaEllipsisV className="ms-3" />
               </div>
             </li>
           ))

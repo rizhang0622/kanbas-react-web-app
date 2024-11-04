@@ -48,8 +48,6 @@ body {
   width: 60vw;
 }
 
-
-
 #wd-assignments .list-group-item {
   color: black;
   background-color: white;
@@ -57,14 +55,10 @@ body {
   border-left: 4px solid green !important;
 }
 
-#wd-assignments .wd-assignments-title{
-  background-color: #6c757d; /* Adjusted for Bootstrap styling */
-        color: white;
+#wd-assignments .wd-assignments-title {
+  background-color: #f3f3f3; /* Adjusted for Bootstrap styling */
+  border: 1px solid #c7cdd1 !important;
 }
-
-
-
-
 
 
 
@@ -90,7 +84,7 @@ body {
   }
 }
 
-.wd-submission-type-group{
+.wd-submission-type-group {
   border: black 1px !important;
 }
 
