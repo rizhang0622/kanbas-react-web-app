@@ -38,11 +38,35 @@ body {
   margin-bottom: 1rem; /* Space below title */
 }
 
-/*Assignments*/
+/*Assignments
 
 #wd-assignment-list .list-group-item {
   border-left: 3px solid green !important;
 }
+*/
+#wd-assignments {
+  width: 60vw;
+}
+
+
+
+#wd-assignments .list-group-item {
+  color: black;
+  background-color: white;
+  border: 1px solid #c7cdd1 !important;
+  border-left: 4px solid green !important;
+}
+
+#wd-assignments .wd-assignments-title{
+  background-color: #6c757d; /* Adjusted for Bootstrap styling */
+        color: white;
+}
+
+
+
+
+
+
 
 #wd-assignments-editor {
   width: 50vw;
