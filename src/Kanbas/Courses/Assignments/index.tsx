@@ -1,6 +1,6 @@
 // src/Kanbas/Courses/Assignments/index.tsx
 import { Link, useParams } from "react-router-dom";
-import { FaSearch, FaPlus, FaClipboardList } from "react-icons/fa";
+import { FaSearch, FaPlus, FaClipboardList, FaEllipsisV } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAssignment } from "./reducer";
 import { useState } from "react";
@@ -34,6 +34,7 @@ export default function Assignments() {
     dispatch(deleteAssignment(id));
     setConfirmDeleteId(null);
   };
+
   return (
     <div id="wd-assignments" className="p-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -47,16 +48,23 @@ export default function Assignments() {
             placeholder="Search for Assignments"
           />
         </div>
-        <Link
-          to={`/Kanbas/Courses/${cid}/Assignments/new`}
-          className="btn btn-danger"
-        >
-          <FaPlus /> Assignment
-        </Link>
+        <div>
+          <button id="wd-add-assignment-group" className="btn btn-light me-2">
+            <FaPlus /> Group
+          </button>
+          <Link
+            id="wd-add-assignment"
+            to={`/Kanbas/Courses/${cid}/Assignments/new`}
+            className="btn btn-danger"
+          >
+            <FaPlus /> Assignment
+          </Link>
+        </div>
       </div>
 
       <h3 id="wd-assignments-title">
         ASSIGNMENTS <span className="text-muted">40% of Total</span>
+        <button className="btn btn-secondary float-end">+</button>
       </h3>
 
       <ul id="wd-assignment-list" className="list-group">
@@ -70,23 +78,30 @@ export default function Assignments() {
                 <span className="text-success me-2">
                   <FaClipboardList />
                 </span>
+                <span className="text-muted me-2">
+                  <FaEllipsisV />
+                </span>
+              </div>
+
+              <div>
                 <Link
                   className="wd-assignment-link me-2"
                   to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                 >
                   {assignment.title}
                 </Link>
-                <span className="text-danger">| {assignment.points} pts</span>
+
+                <br />
+                <span className="text-danger">| Multiple Modules</span>
+
+                <span>
+                  | Not available until {assignment.availableFrom} | Due {assignment.dueDate} | {assignment.points} pts
+                </span>
               </div>
 
-              <div>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => setConfirmDeleteId(assignment._id)}
-                >
-                  Delete
-                </button>
-              </div>
+              <span className="text-muted me-2">
+                <FaEllipsisV />
+              </span>
             </li>
           ))
         ) : (
