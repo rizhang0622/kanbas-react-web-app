@@ -1,17 +1,39 @@
+// src/Kanbas/Courses/Assignments/index.tsx
 import { Link, useParams } from "react-router-dom";
-import { FaSearch, FaPlus, FaClipboardList, FaEllipsisV } from "react-icons/fa";
-import GreenCheckmark from "../Modules/GreenCheckmark";
-import ModuleControlButtons from "../Modules/ModuleControlButtons";
-import db from "../../Database";
+import { FaSearch, FaPlus, FaClipboardList } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAssignment } from "./reducer";
+import { useState } from "react";
+
+// Define the Assignment interface locally
+interface Assignment {
+  _id: string;
+  title: string;
+  course: string;
+  description?: string;
+  points?: number;
+  dueDate?: string;
+  availableFrom?: string;
+  availableUntil?: string;
+}
 
 export default function Assignments() {
   const { cid } = useParams();
-  const assignments = db.assignments;
+  const dispatch = useDispatch();
+  const assignments = useSelector(
+    (state: { assignmentsReducer: { assignments: Assignment[] } }) =>
+      state.assignmentsReducer.assignments
+  );
 
   const filteredAssignments = assignments.filter(
     (assignment) => assignment.course === cid
   );
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
+  const handleDelete = (id: string) => {
+    dispatch(deleteAssignment(id));
+    setConfirmDeleteId(null);
+  };
   return (
     <div id="wd-assignments" className="p-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -25,19 +47,16 @@ export default function Assignments() {
             placeholder="Search for Assignments"
           />
         </div>
-        <div>
-          <button id="wd-add-assignment-group" className="btn btn-light me-2">
-            <FaPlus /> Group
-          </button>
-          <button id="wd-add-assignment" className="btn btn-danger">
-            <FaPlus /> Assignment
-          </button>
-        </div>
+        <Link
+          to={`/Kanbas/Courses/${cid}/Assignments/new`}
+          className="btn btn-danger"
+        >
+          <FaPlus /> Assignment
+        </Link>
       </div>
 
       <h3 id="wd-assignments-title">
         ASSIGNMENTS <span className="text-muted">40% of Total</span>
-        <button className="btn btn-secondary float-end">+</button>
       </h3>
 
       <ul id="wd-assignment-list" className="list-group">
@@ -51,32 +70,23 @@ export default function Assignments() {
                 <span className="text-success me-2">
                   <FaClipboardList />
                 </span>
-                <span className="text-muted me-2">
-                  <FaEllipsisV />
-                </span>
-              </div>
-
-              <div>
                 <Link
                   className="wd-assignment-link me-2"
-                  to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} 
+                  to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
                 >
                   {assignment.title}
                 </Link>
-
-                <br />
-                <span className="text-danger">| Multiple Modules</span>
-
-                <span>
-                  | Not available until May 6 at 12:00am | Due May 13 at 11:59pm
-                  | 100 pts
-                </span>
+                <span className="text-danger">| {assignment.points} pts</span>
               </div>
 
-              <GreenCheckmark />
-              <span className="text-muted me-2">
-                <FaEllipsisV />
-              </span>
+              <div>
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => setConfirmDeleteId(assignment._id)}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))
         ) : (
@@ -85,6 +95,24 @@ export default function Assignments() {
           </li>
         )}
       </ul>
+
+      {confirmDeleteId && (
+        <div className="alert alert-warning">
+          <p>Are you sure you want to delete this assignment?</p>
+          <button
+            className="btn btn-danger"
+            onClick={() => handleDelete(confirmDeleteId)}
+          >
+            Yes
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setConfirmDeleteId(null)}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
     </div>
   );
 }
